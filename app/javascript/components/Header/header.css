@@ -1,0 +1,66 @@
+body {
+  font-family: sans-serif;
+}
+
+/* very basic reset */
+
+body,
+h1,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  make the header
+  our first flex container
+*/
+
+header {
+  align-items: center;
+  display: flex;
+  margin: 2em;
+}
+
+/*
+  as children of header,
+  logo and nav
+  become our flex items
+*/
+
+#logo,
+nav {
+
+  /*
+    flex is shorthand for
+    flex-grow,
+    flex-shrink,
+    and flex-basis
+
+    this gives us
+    auto equal width flex items
+    and they are all flexbile ... yay!
+  */
+
+  flex: 1;
+}
+
+/*
+  make the nav ul
+  our second flex container
+*/
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*
+  as children of ul,
+  all list items
+  become flex items
+*/
+
+nav li {
+  list-style: none;
+}
