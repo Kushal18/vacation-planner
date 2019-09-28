@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { Form, DateTimeField, FormControl,Col, FormGroup, Checkbox, Button, Card,InputGroup, Input,Toast } from 'react-bootstrap';
 import { GoogleMap, Marker, withScriptjs, withGoogleMap } from "react-google-maps"
 
-const API_KEY = "=AIzaSyD78o8N_1D3QtcU20FK8s2MCNEfgkb73hM";
 const mapStyles = {
   width: '20%',
   height: '20%'

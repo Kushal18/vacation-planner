@@ -8,7 +8,7 @@ class Trip < ApplicationRecord
   validates_presence_of :endDate
   validates_presence_of :address
 
-  scope:upcomingTrips, lambda {where(startDate: Date.today..Date.today + 1.year)}
-  scope:previousTrips, lambda {where(endDate: Date.today - 1.year..Date.today)}
+  scope:upcomingVacations, lambda {where(startDate: Date.today..Date.today + 1.year)}
+  scope:previousVacations, lambda {where(endDate: Date.today - 1.year..Date.today)}
 
 end

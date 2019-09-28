@@ -52,21 +52,18 @@ export class CreateTrip extends Component {
 
 
   handleSubmit() {
-    event.preventDefault();
-
-    let tripName = this.state.tripName;
-    let startDate = this.state.startDate;
-    let endDate = this.state.endDate;
-    let location = this.state.location;
+    let trip = {
+      tripName: this.state.tripName,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      location: this.state.location
+    }
 
     console.log(tripName,startDate,endDate,location);
 
 
-  axios.post('http://localhost:3000/trip',{
-      tripName: tripName,
-      startDate: startDate,
-      endDate: endDate,
-      location: location,
+  axios.post('http://localhost:3000/trips',{
+      trip,
       id: this.props.user.id
     },
     { withCredentials: true }

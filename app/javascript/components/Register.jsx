@@ -8,11 +8,12 @@ export class Register extends Component {
     super(props);
 
     this.state = {
-      email : "",
-      password: "",
-      name: "",
-      gender: "",
-      location: ""
+        email : "",
+        password: "",
+        name: "",
+        gender: "",
+        location: "",
+        error: []
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,20 +28,20 @@ export class Register extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
 
-    let emailId = this.state.email
-    let password = this.state.password
-    let name = this.state.name
-    let gender = this.state.gender
-    let location = this.state.location
+    let user = {
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.name,
+      sex: this.state.gender,
+      address: this.state.location
+    }
+
+
+
 
     axios.post('http://localhost:3000/registrations',{
-      email: emailId,
-      password: password,
-      name: name,
-      sex: gender,
-      address: location
+        user
     },
     { withCredentials: true }
   ).then(response => {
@@ -48,11 +49,12 @@ export class Register extends Component {
         this.props.handleSuccesfulAuth(response.data);
         this.props.history.push("/dashboard");
       }
-      console.log("response login ", response.data);
-    }).catch(error =>{
-      console.log("login error ", error);
+   }).catch(error => {
+     this.setState({
+       error: error.response.data
+     });
    })
-  }
+ }
 
   render() {
       return (
@@ -88,6 +90,13 @@ export class Register extends Component {
          </Form>
         <Button variant="primary" onClick ={this.handleSubmit}>Sign Up</Button>
         </Card.Body>
+        <Card.Footer>
+          {this.state.error.map((error,idx) =>
+            <Alert key={idx} variant={variant}>
+                error
+            </Alert>
+          )}
+        </Card.Footer>
         </Card>
         </div>
       );
